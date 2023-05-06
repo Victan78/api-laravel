@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('/utilisateur/inscription', [UserController::class, 'inscription']);
-Route::post('/utilisateur/connexion', [UserController::class, 'connexion']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/utilisateur/inscription', [UserController::class, 'inscription']);
+Route::get('/utilisateur/connexion', [UserController::class, 'connexion']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/utilisateur/compte/deconnexion', [UserController::class, 'deconnexion']);
+    Route::get('/utilisateur/compte/suppression', [UserController::class, 'suppression']);
+ 
+}
+);
