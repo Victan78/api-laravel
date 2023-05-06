@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/utilisateur/inscription', [UserController::class, 'inscription']);
-Route::get('/utilisateur/connexion', [UserController::class, 'connexion']);
+Route::post('/utilisateur/inscription', [UserController::class, 'inscription']);
+Route::post('/utilisateur/connexion', [UserController::class, 'connexion']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/utilisateur/compte/deconnexion', [UserController::class, 'deconnexion']);
-    Route::get('/utilisateur/compte/suppression', [UserController::class, 'suppression']);
+    Route::post('/utilisateur/compte/deconnexion', [UserController::class, 'deconnexion']);
+    Route::post('/utilisateur/compte/suppression', [UserController::class, 'suppression']);
  
 }
 );
